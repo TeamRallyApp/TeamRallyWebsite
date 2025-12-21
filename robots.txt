@@ -1,0 +1,6 @@
+# robots.txt for TeamRally
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://teamrally.com/sitemap.xml
