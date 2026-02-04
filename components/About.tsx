@@ -79,7 +79,7 @@ export default function About() {
                 <img
                   src="assets/images/kaley.png"
                   alt="Kaley - Founder of TeamRally"
-                  className="w-48 h-48 rounded-lg object-cover shadow-xl border-4 border-white"
+                  className="w-64 h- 74 rounded-lg object-cover shadow-xl border-4 border-white"
                 />
               </div>
 
