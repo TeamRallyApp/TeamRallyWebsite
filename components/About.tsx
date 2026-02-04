@@ -77,7 +77,7 @@ export default function About() {
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex-shrink-0">
                 <img
-                  src="https://i.postimg.cc/L6wDyR8r/Screenshot-2025-12-15-at-7-38-35-PM.png"
+                  src="assets/images/kaley.png"
                   alt="Kaley - Founder of TeamRally"
                   className="w-48 h-48 rounded-lg object-cover shadow-xl border-4 border-white"
                 />
