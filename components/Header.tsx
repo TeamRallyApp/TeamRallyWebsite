@@ -5,8 +5,6 @@ interface HeaderProps {
   onOpenWaitlist: () => void;
 }
 
-{/* <img src="" alt="Kaley - Founder of TeamRally" class="w-48 h-48 rounded-lg object-cover shadow-xl border-4 border-white"> */ }
-
 export default function Header({ onOpenWaitlist }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,19 +55,20 @@ export default function Header({ onOpenWaitlist }: HeaderProps) {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-      ? 'bg-white shadow-md'
-      : 'bg-white/95 backdrop-blur-sm border-b border-gray-200'
-      }`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled
+        ? 'bg-white shadow-md'
+        : 'bg-white/95 backdrop-blur-sm border-b border-gray-200'
+    }`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
             <img
-              src="assets/images/logo_pink.svg"
-
+              src="https://i.postimg.cc/BZ28Kjfj/Group-64702-(1).png"
+              alt="TeamRally Logo"
               className="h-12 w-auto"
             />
-            <span className="text-xl font-bold text-[#C2274B]"></span>
+            <span className="text-xl font-bold text-[#C2274B]">TeamRally</span>
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -141,3 +140,4 @@ export default function Header({ onOpenWaitlist }: HeaderProps) {
     </header>
   );
 }
+
