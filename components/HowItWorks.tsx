@@ -52,12 +52,12 @@ export default function HowItWorks() {
           <div className="space-y-12">
             {steps.map((step, index) => (
               <div
-                key={index}
+                key={step.title}
                 className={`flex flex-col lg:flex-row items-center gap-8 ${
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
                 }`}
               >
-                <div className="flex-1 lg:text-right" style={{ textAlign: index % 2 === 0 ? 'right' : 'left' }}>
+                <div className={`flex-1 text-left ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
                   <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                     <h3 className="text-2xl font-bold text-gray-900 mb-3">
                       {index + 1}. {step.title}

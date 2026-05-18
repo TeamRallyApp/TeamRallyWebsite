@@ -1,4 +1,4 @@
-import { Target, Heart, TrendingUp, User } from 'lucide-react';
+import { Target, Heart, TrendingUp } from 'lucide-react';
 
 export default function About() {
   return (

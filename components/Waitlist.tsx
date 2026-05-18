@@ -21,6 +21,11 @@ export default function Waitlist({ isOpen, onClose }: WaitlistProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
 
+  const handleChange = (updates: Partial<typeof formData>) => {
+    if (submitStatus === 'error') setSubmitStatus('idle');
+    setFormData(prev => ({ ...prev, ...updates }));
+  };
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -161,8 +166,9 @@ export default function Waitlist({ isOpen, onClose }: WaitlistProps) {
                 ref={firstInputRef}
                 type="text"
                 required
+                aria-label="First Name"
                 value={formData.firstName}
-                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                onChange={(e) => handleChange({ firstName: e.target.value })}
                 placeholder="First Name"
                 className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-transparent focus:border-white focus:ring-2 focus:ring-white/50 transition-all outline-none text-gray-900 placeholder:text-gray-400"
               />
@@ -173,8 +179,9 @@ export default function Waitlist({ isOpen, onClose }: WaitlistProps) {
               <input
                 type="text"
                 required
+                aria-label="Last Name"
                 value={formData.lastName}
-                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                onChange={(e) => handleChange({ lastName: e.target.value })}
                 placeholder="Last Name"
                 className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-transparent focus:border-white focus:ring-2 focus:ring-white/50 transition-all outline-none text-gray-900 placeholder:text-gray-400"
               />
@@ -186,8 +193,9 @@ export default function Waitlist({ isOpen, onClose }: WaitlistProps) {
             <input
               type="email"
               required
+              aria-label="Email address"
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) => handleChange({ email: e.target.value })}
               placeholder="Email"
               className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-transparent focus:border-white focus:ring-2 focus:ring-white/50 transition-all outline-none text-gray-900 placeholder:text-gray-400"
             />
@@ -197,8 +205,9 @@ export default function Waitlist({ isOpen, onClose }: WaitlistProps) {
             <input
               type="text"
               required
+              aria-label="State of residence"
               value={formData.state}
-              onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+              onChange={(e) => handleChange({ state: e.target.value })}
               placeholder="State of Residence"
               className="w-full px-4 py-4 rounded-xl border-2 border-transparent focus:border-white focus:ring-2 focus:ring-white/50 transition-all outline-none text-gray-900 placeholder:text-gray-400"
             />
@@ -208,8 +217,9 @@ export default function Waitlist({ isOpen, onClose }: WaitlistProps) {
               required
               min="1"
               max="120"
+              aria-label="Age"
               value={formData.age}
-              onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+              onChange={(e) => handleChange({ age: e.target.value })}
               placeholder="Age"
               className="w-full px-4 py-4 rounded-xl border-2 border-transparent focus:border-white focus:ring-2 focus:ring-white/50 transition-all outline-none text-gray-900 placeholder:text-gray-400"
             />
@@ -219,20 +229,21 @@ export default function Waitlist({ isOpen, onClose }: WaitlistProps) {
             <textarea
               required
               value={formData.hobbiesSports}
-              onChange={(e) => setFormData({ ...formData, hobbiesSports: e.target.value })}
+              onChange={(e) => handleChange({ hobbiesSports: e.target.value })}
               placeholder="What hobbies and sports are you most passionate about? No interest is too small—list them all so we can help you connect with the right players and games!"
               rows={4}
               className="w-full px-4 py-4 rounded-xl border-2 border-transparent focus:border-white focus:ring-2 focus:ring-white/50 transition-all outline-none text-gray-900 resize-none placeholder:text-gray-400"
             />
           </div>
 
-          <div className="mb-8">
-            <p className="text-white font-semibold mb-4 text-lg">Would you like to beta test TeamRally?</p>
+          <fieldset className="mb-8">
+            <legend className="text-white font-semibold mb-4 text-lg">Would you like to beta test TeamRally?</legend>
             <div className="flex gap-4">
               <label className="flex-1 cursor-pointer">
                 <input
                   type="radio"
                   name="betaTester"
+                  id="betaTesterYes"
                   checked={formData.betaTester === true}
                   onChange={() => setFormData({ ...formData, betaTester: true })}
                   className="peer sr-only"
@@ -245,6 +256,7 @@ export default function Waitlist({ isOpen, onClose }: WaitlistProps) {
                 <input
                   type="radio"
                   name="betaTester"
+                  id="betaTesterNo"
                   checked={formData.betaTester === false}
                   onChange={() => setFormData({ ...formData, betaTester: false })}
                   className="peer sr-only"
@@ -254,7 +266,7 @@ export default function Waitlist({ isOpen, onClose }: WaitlistProps) {
                 </div>
               </label>
             </div>
-          </div>
+          </fieldset>
 
           <button
             type="submit"

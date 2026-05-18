@@ -1,5 +1,5 @@
 import { Menu, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface HeaderProps {
   onOpenWaitlist: () => void;
@@ -8,6 +8,8 @@ interface HeaderProps {
 export default function Header({ onOpenWaitlist }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +34,32 @@ export default function Header({ onOpenWaitlist }: HeaderProps) {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const buttons = Array.from(mobileMenuRef.current?.querySelectorAll<HTMLButtonElement>('button') ?? []);
+    buttons[0]?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const items = Array.from(mobileMenuRef.current?.querySelectorAll<HTMLButtonElement>('button') ?? []);
+      const currentIndex = items.indexOf(document.activeElement as HTMLButtonElement);
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        items[(currentIndex + 1) % items.length]?.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        items[(currentIndex - 1 + items.length) % items.length]?.focus();
+      } else if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+        hamburgerRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isMenuOpen]);
 
   const scrollToSection = (id: string) => {
@@ -99,7 +127,10 @@ export default function Header({ onOpenWaitlist }: HeaderProps) {
           </div>
 
           <button
+            ref={hamburgerRef}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-label="Toggle navigation menu"
             className="md:hidden p-2 text-gray-700"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -107,7 +138,7 @@ export default function Header({ onOpenWaitlist }: HeaderProps) {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 bg-white animate-in slide-in-from-top-2 duration-200">
+          <div ref={mobileMenuRef} className="md:hidden py-4 border-t border-gray-200 bg-white animate-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col space-y-3">
               <button onClick={() => scrollToSection('home')} className="text-left text-gray-700 hover:text-[#C2274B] hover:bg-red-50 transition-all py-3 px-4 rounded-lg">
                 Home
