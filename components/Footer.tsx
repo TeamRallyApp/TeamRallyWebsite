@@ -101,12 +101,8 @@ export default function Footer({ onOpenWaitlist }: FooterProps) {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col items-center gap-4">
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <a href="mailto:contact.teamrally@gmail.com" className="text-gray-400 hover:text-[#DC2626] transition-colors">
-                contact.teamrally@gmail.com
-              </a>
-              <span className="text-gray-600">|</span>
-              <a href="mailto:teamrallyapp@gmail.com" className="text-gray-400 hover:text-[#DC2626] transition-colors">
-                teamrallyapp@gmail.com
+              <a href="mailto:contact@teamrallyapp.com" className="text-gray-400 hover:text-[#DC2626] transition-colors">
+                contact@teamrallyapp.com
               </a>
             </div>
             <a
