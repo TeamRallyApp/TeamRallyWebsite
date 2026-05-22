@@ -92,7 +92,7 @@ export default function Header({ onOpenWaitlist }: HeaderProps) {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
             <img
-              src="https://i.postimg.cc/BZ28Kjfj/Group-64702-(1).png"
+              src="/images/logo.png"
               alt="TeamRally Logo"
               className="h-12 w-auto"
             />

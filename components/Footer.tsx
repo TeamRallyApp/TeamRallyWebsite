@@ -26,7 +26,7 @@ export default function Footer({ onOpenWaitlist }: FooterProps) {
           <div>
             <div className="flex items-center space-x-3 mb-4">
               <img
-                src="https://i.postimg.cc/BZ28Kjfj/Group-64702-(1).png"
+                src="/images/logo.png"
                 alt="TeamRally Logo"
                 className="h-12 w-auto"
               />

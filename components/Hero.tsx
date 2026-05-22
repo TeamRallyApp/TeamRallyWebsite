@@ -32,11 +32,18 @@ export default function Hero({ onOpenWaitlist }: HeroProps) {
               Join the Waitlist
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={22} />
             </button>
-            <img
-              src="https://i.postimg.cc/431tVn9Q/Group-1000002564.png"
-              alt="Rally App Preview"
-              className="max-w-full h-auto"
-            />
+            <picture>
+              <source
+                srcSet="/images/hero-400.jpg 400w, /images/hero-800.jpg 800w, /images/hero-1200.jpg 1200w"
+                sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, 1200px"
+              />
+              <img
+                src="/images/hero-1200.jpg"
+                alt="TeamRally App Preview"
+                fetchpriority="high"
+                className="max-w-full h-auto mix-blend-multiply"
+              />
+            </picture>
           </div>
         </div>
       </div>
