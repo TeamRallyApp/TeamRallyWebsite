@@ -1,4 +1,4 @@
-import { MapPin, Users, UsersRound, Calendar, Image, MessageSquare, ShoppingBag } from 'lucide-react';
+import { MapPin, Users, UsersRound, Image, MessageSquare, ShoppingBag } from 'lucide-react';
 
 export default function Features() {
   const features = [
@@ -30,7 +30,7 @@ export default function Features() {
     {
       icon: MessageSquare,
       title: 'Messaging',
-      description: 'Chat players with ease, no more fragmented apps.',
+      description: 'Chat with players easily, no more fragmented apps.',
       gradient: 'from-[#C2274B] to-red-600'
     },
     {
@@ -54,9 +54,9 @@ export default function Features() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <div
-              key={index}
+              key={feature.title}
               className="bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className={`w-14 h-14 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center mb-6`}>

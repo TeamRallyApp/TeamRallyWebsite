@@ -38,8 +38,8 @@ export default function Benefits() {
             <h3 className="text-3xl font-bold text-gray-900 mb-8">For Players</h3>
 
             <ul className="space-y-4">
-              {playerBenefits.map((benefit, index) => (
-                <li key={index} className="flex items-start">
+              {playerBenefits.map((benefit) => (
+                <li key={benefit} className="flex items-start">
                   <div className="flex-shrink-0 w-6 h-6 bg-gradient-to-br from-[#C2274B] to-[#DC2626] rounded-full flex items-center justify-center mt-1">
                     <Check className="text-white" size={16} />
                   </div>
@@ -53,8 +53,8 @@ export default function Benefits() {
             <h3 className="text-3xl font-bold text-gray-900 mb-8">For Teams & Organizers</h3>
 
             <ul className="space-y-4">
-              {organizerBenefits.map((benefit, index) => (
-                <li key={index} className="flex items-start">
+              {organizerBenefits.map((benefit) => (
+                <li key={benefit} className="flex items-start">
                   <div className="flex-shrink-0 w-6 h-6 bg-[#DC2626] rounded-full flex items-center justify-center mt-1">
                     <Check className="text-white" size={16} />
                   </div>

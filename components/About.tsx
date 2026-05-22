@@ -1,4 +1,4 @@
-import { Target, Heart, TrendingUp, User } from 'lucide-react';
+import { Target, Heart, TrendingUp } from 'lucide-react';
 
 export default function About() {
   return (
@@ -77,7 +77,7 @@ export default function About() {
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex-shrink-0">
                 <img
-                  src="https://i.postimg.cc/zDjRyyyj/image0.jpg"
+                  src="/images/founder.jpg"
                   alt="Kaley - Founder of TeamRally"
                   className="w-64 h-64 rounded-lg object-cover shadow-xl border-4 border-white"
                 />

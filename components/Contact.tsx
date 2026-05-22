@@ -10,6 +10,11 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  const handleChange = (updates: Partial<typeof formData>) => {
+    if (submitStatus === 'error') setSubmitStatus('idle');
+    setFormData(prev => ({ ...prev, ...updates }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -73,7 +78,7 @@ export default function Contact() {
               id="name"
               required
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) => handleChange({ name: e.target.value })}
               className="w-full px-4 py-4 rounded-xl border-2 border-gray-200 focus:border-[#C2274B] focus:ring-2 focus:ring-pink-100 transition-all outline-none"
               placeholder="Your name"
             />
@@ -91,7 +96,7 @@ export default function Contact() {
               id="email"
               required
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) => handleChange({ email: e.target.value })}
               className="w-full px-4 py-4 rounded-xl border-2 border-gray-200 focus:border-[#C2274B] focus:ring-2 focus:ring-pink-100 transition-all outline-none"
               placeholder="your@email.com"
             />
@@ -108,7 +113,7 @@ export default function Contact() {
               id="message"
               required
               value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              onChange={(e) => handleChange({ message: e.target.value })}
               rows={5}
               className="w-full px-4 py-4 rounded-xl border-2 border-gray-200 focus:border-[#C2274B] focus:ring-2 focus:ring-pink-100 transition-all outline-none resize-none"
               placeholder="Your message..."
